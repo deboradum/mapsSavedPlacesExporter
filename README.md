@@ -1,5 +1,15 @@
-This program allows you to easily transfer Google Maps saved places to another account.
+This program allows you to migrate downloaded CSV- or JSON files to another
+Google account. Simply call the program and give the filepath as an argument.
+When a location can not be added for some reason, it is printed to stdout so it
+can be manually added. The error rate is about 2%.
 
-The user only needs to specify the path of the csv or json file & specify the list to save the places in on line 52.
+This program uses Chromedriver to open and control the browser. Please install
+Chromedriver to use the program. Change the CHROMEDRIVER_PATH variable to the
+install location to start migrating. To save the locations to a different folder,
+change the FOLDER_NAME variable.
 
-Chromedriver is needed to run this program. Line 21 can be changed to represent the path of the chromedriver file.
+When migrating Google accounts I did not want to manually migrate my hundreds of
+starred- and saved places. I wrote this program to transfer the places for me. If
+the program does not work, please check to see if your CHROMEDRIVER_PATH variable
+is correct. If this is the case and the program still does not work, the XPATHS
+might have changed and would need to be updated in the program to the correct ones.
