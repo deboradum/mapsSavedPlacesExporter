@@ -49,6 +49,7 @@ def main(filepath):
             save_btn = driver.find_element(by=By.XPATH, value="/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div[2]/button")
             save_btn.click()
             time.sleep(1) # Wait until loaded.
+            # Finds the correct folder
             overnacht_btn = driver.find_element(by=By.XPATH, value=f"//div[contains(text(), '{FOLDER_NAME}')]/parent::div/parent::li")
             overnacht_btn.click()
             time.sleep(2.5) # Wait until added.
