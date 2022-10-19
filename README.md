@@ -13,3 +13,5 @@ starred- and saved places. I wrote this program to transfer the places for me. I
 the program does not work, please check to see if your CHROMEDRIVER_PATH variable
 is correct. If this is the case and the program still does not work, the XPATHS
 might have changed and would need to be updated in the program to the correct ones.
+
+Information about how Google Maps saved places are downloaded can be found [here](https://www.knowyourmobile.com/user-guides/how-to-download-and-export-your-starred-google-maps-locations/)
