@@ -1,6 +1,6 @@
 # Opens every saved place from a google exported JSON/ CSV file of your Google
 # Maps places to make transferring across accounts easy.
-import json
+import csv
 import time
 import sys
 from os.path import exists
@@ -27,7 +27,8 @@ def init_driver():
         print(e)
         return None
 
-def main(filepath):
+
+def main(driver, filepath):
     # Opens file
     file = open(filepath)
     # Goes to log in page for google. User needs to be logged in to save maps to
@@ -35,23 +36,23 @@ def main(filepath):
     driver.get("https://accounts.google.com/signin")
     input("Press Enter when logged in.")
 
-    # For JSON files.
-    data = json.load(file)
-    data = data["features"]
-    count = 0
-    for el in data:
+    # For CSV files.
+    data = csv.reader(file)
+    for row in data:
+        # Skips first row.
+        if row[2] == "URL":
+            continue
+        link = row[2]
         try:
-            link = el["properties"]["Google Maps URL"]
             driver.get(link)
-            input("Press Enter to continue.")
-
+            time.sleep(1.5)
             # Finds buttons to add.
             save_btn = driver.find_element(by=By.XPATH, value="/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div[2]/button")
             save_btn.click()
-            time.sleep(1) # Wait until loaded.
+            time.sleep(1.8) # Wait until loaded.
             overnacht_btn = driver.find_element(by=By.XPATH, value=f"//div[contains(text(), '{FOLDER_NAME}')]/parent::div/parent::li")
             overnacht_btn.click()
-            time.sleep(2.5) # Wait until added.
+            time.sleep(3.5) # Wait until added.
         except Exception as e:
             print(e)
             print("error at: " + link + " continuing.\n")
