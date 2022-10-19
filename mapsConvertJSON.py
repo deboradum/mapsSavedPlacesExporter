@@ -69,4 +69,4 @@ if __name__ == '__main__':
         else:
             print("File does not exist.")
     else:
-        print("Incorrect syntax. Correct use: 'python mapsConvertCSV <filepath>'.")
+        print("Incorrect syntax. Correct use: 'python mapsConvertJSON <filepath>'.")
